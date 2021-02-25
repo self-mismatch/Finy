@@ -39,6 +39,7 @@
     </script>
 
     <title>Finy</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 <main>
@@ -47,8 +48,76 @@
 
     <button onclick="window.location.reload()">Обновить приложение</button>
 
+    <section class="finance">
+        <div class="finance__wrapper">
+            <button class="finance__collapse-button">Январь</button>
+            <div class="finance__collapse-content">
+                <ul class="finance__categories">
+                    <li class="finance__categories-item">Продукты</li>
+                    <li class="finance__categories-item">Транспорт</li>
+                    <li class="finance__categories-item">Образование</li>
+                    <li class="finance__categories-item">Одежда</li>
+                </ul>
+            </div>
+            <button class="finance__collapse-button">Февраль</button>
+            <div class="finance__collapse-content">
+                <ul class="finance__categories">
+                    <li class="finance__categories-item">Продукты</li>
+                    <li class="finance__categories-item">Транспорт</li>
+                    <li class="finance__categories-item">Образование</li>
+                    <li class="finance__categories-item">Одежда</li>
+                </ul>
+            </div>
+            <button class="finance__collapse-button">Март</button>
+            <div class="finance__collapse-content">
+                <ul class="finance__categories">
+                    <li class="finance__categories-item">Продукты</li>
+                    <li class="finance__categories-item">Транспорт</li>
+                    <li class="finance__categories-item">Образование</li>
+                    <li class="finance__categories-item">Одежда</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
 <!--    <p style="color: red;font-weight: 700; font-size: 36px;">А енто моя ЛЮБОВЬ</p>-->
 <!--    <img src="images/pic_love.jpg" width="100%" alt="">-->
 </main>
+
+<script>
+    'use strict';
+    const page = document.body;
+
+    const collapseButtons = page.querySelectorAll('.finance__collapse-button');
+
+    const showCollapse = (collapse) => {
+        collapse.classList.add('finance__collapse-content--shown');
+    };
+
+    const hideCollapse = (collapse) => {
+        collapse.classList.remove('finance__collapse-content--shown');
+    };
+
+    const toggleCollapse = (collapse) => {
+        console.log(collapse);
+        collapse.classList.toggle('finance__collapse-content--shown');
+    }
+
+    const onCollapseButtonClick = (evt) => {
+        const button = evt.target;
+        const collapse = button.nextElementSibling;
+
+        toggleCollapse(collapse);
+    };
+
+    const activateCollapse = () => {
+        console.log(collapseButtons);
+        collapseButtons.forEach((button) => {
+            button.addEventListener('click', onCollapseButtonClick);
+        });
+    };
+
+    activateCollapse();
+</script>
 </body>
 </html>
