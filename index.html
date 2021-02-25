@@ -7,7 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Finy</title>
 
-    <script src="js/app.js"></script>
+<!--    <script src="js/app.js"></script>-->
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/js/sw.js').then(function(registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
 
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="./images/logos/logo-96x96.png">
